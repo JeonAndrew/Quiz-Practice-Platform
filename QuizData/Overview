@@ -1,0 +1,38 @@
+Course class
+has:
+//course name, something like CS222 or CS225 or CS173 or ECON102
+std::string courseName_ 
+
+//list of topics in the course, something like "memory management" or "graphs and coloring" or "grammar trees" or "supply and demand"
+//I just realized that i made this a vector of strings and not a vector of Topics; i will fix that at some point
+std::vector<Topic> topics_
+
+
+Topic class
+has:
+
+//proficiency score. The way I'm thinking this works is very barbaric/crude/elementary—if you get a question in a Topic correct, proficiency will increase by 1, and if you get it incorrect, proficiency will decrease by 1.
+//proficiency goes from [0..20] inclusive (i.e. if you get 10 questions right in a row from the get-go, you've probably fully mastered this topic) (likewise, if you get 10 straight questions wrong, you probably have minimal proficiency in this topic)
+//if we want to (i do) (really the question is "if we have the time/energy/passion to") make this a little better, we can make proficiency a double and only change it by 0.5 if you are <= 5 or >= 15 and you answer not-according to your score. (i.e. if you have shown general proficiency in a topic, and you misclick/get one wrong, you aren't penalized that bad). Essentially, if your proficiency is 19/20, but you make a silly mistake, you shouldn't be penalized to go down back to 18/20. Likewise, if you have a 4/20 proficiency but get a question right because it's multiple choice, your proficiency score should not go up very much.
+int proficiency_;
+
+//a list of questions that fall under this topic
+std::vector<Question> questions_;
+
+
+
+Question class
+has:
+
+//a list of questions, something like ["Which of these will not compile?", "true or false: you should always call delete on pointers"]. Compilation question is at index 0, and True False question is at index 1.
+std::vector<std::string> questions_;
+
+//a list of corresponding correct answers, something like ["int a = 5", "false"]. again answer to the compilation question is at index 0, and the true/false answer is at index 1.
+std::vector<std::string> correctAnswers_;
+
+//a list of a list of corresponding incorrect answers
+//something like [["int b = 2;", "#include <iostream>", "int foo() { return -1; }"], ["true"]].
+//a VECTOR of possible answers to the compilation question is at index 0 
+//(that way you can pull any 3 possible answers out of, say, 5 answers that we decide to store—it makes questions have more variety since answer choices get mixed up). 
+//a VECTOR of possible answers to the true/false (although there is only one possible wrong answer to choose) is at index 1.
+std::vector<std::vector<std::string>> incorrectAnswers_;
