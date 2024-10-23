@@ -7,6 +7,7 @@
 class Question {
 public:
     Question();
+    Question(std::string t);
     //todo
 
 private:
@@ -18,6 +19,7 @@ private:
     std::vector<std::string> questions_;
     std::vector<std::string> correctAnswers_;
     std::vector<std::vector<std::string>> incorrectAnswers_;
+    std::string topic_;
 };
 
 #endif // QUESTION_H
