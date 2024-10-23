@@ -9,6 +9,7 @@ public:
     Question();
     Question(std::string t);
     //todo
+    void addQuestion(int index, std::string q, std::string ans, std::vector<std::string> wrongs);
 
 private:
     //usage:
