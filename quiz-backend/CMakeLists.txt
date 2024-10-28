@@ -1,51 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-# include(assignment.cmake)
-
-# Add color support to our messages.
-# See: https://stackoverflow.com/questions/18968979/how-to-get-colorized-output-with-cmake
-# if(NOT WIN32)
-#   string(ASCII 27 Esc)
-#   set(ColorReset   "${Esc}[m")
-#   set(ColorBold    "${Esc}[1m")
-#   set(ColorRed     "${Esc}[31m")
-#   set(ColorGreen   "${Esc}[32m")
-#   set(ColorYellow  "${Esc}[33m")
-#   set(ColorBlue    "${Esc}[34m")
-#   set(ColorMagenta "${Esc}[35m")
-#   set(ColorCyan    "${Esc}[36m")
-#   set(ColorWhite   "${Esc}[37m")
-# endif()
-
-# Handle unsupported container warnings.
-# Default to remind students to use our container, unless they are using our targeted container.
-# set(REMIND_CONTAINER TRUE)
-# if(DEFINED ENV{CS225_CONTAINER})
-#     if($ENV{CS225_CONTAINER} STREQUAL ${assignment_container})
-#         # This is the container we are targetting, so don't print the reminder.
-#         unset(REMIND_CONTAINER)
-#     else()
-#         message(STATUS "${ColorYellow}Looks like you may be using an outdated container.${ColorReset}")
-#     endif()
-# else()
-#     # Warn students who are not using our container at all.
-#     message(STATUS "${ColorYellow}Looks like you are not using the provided container.${ColorReset}")
-# endif()
-
-# Remind students to use our container.
-# if(DEFINED REMIND_CONTAINER)
-#     message(WARNING "${ColorYellow}Make sure you test on the CS225 container before the deadline.${ColorReset}")
-# endif()
-
-# Disable in-source builds (running "cmake ." in the project directory)
-# This is bad practice as it pollutes the project directory.
-# See: https://dpiepgrass.medium.com/cmake-fights-against-disabling-in-source-builds-ab1d71c1d26f
-# if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}") 
-#   message(FATAL_ERROR "${ColorRed}In-source builds are disabled.\n"
-#     "Create a subdirectory `build/` and use `cmake ..` inside it.\n"
-#     "${ColorBold}Delete `CMakeCache.txt` and `CMakeFiles/` before you continue.${ColorReset}")
-# endif()
-
 # Specify C++ compiler and linker.
 set(CMAKE_C_COMPILER "/usr/bin/clang")
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
@@ -75,9 +29,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Werror -Wfatal-errors -
 
 # Specify debug symbols and no optimizations for Debug builds.
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG -O0 -gdwarf-4")
-
-# Specify additional clean files.
-# set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_CLEAN_FILES "${assignment_clean_rm}")
 
 # Add Catch2.
 # Note: Ubuntu 20.04 LTS does not have Catch2 on apt
