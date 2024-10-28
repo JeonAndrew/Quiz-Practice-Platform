@@ -1,5 +1,5 @@
-#include "quiz.h"
-#include "user.h"
+#include "Quiz.h"
+#include "User.h"
 #include <utility>
 #include "Question.h"
 
