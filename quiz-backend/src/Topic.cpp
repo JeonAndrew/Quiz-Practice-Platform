@@ -10,6 +10,7 @@ std::string Topic::getName() {
 
 std::string Topic::setName(std::string in) {
     name_ = in;
+    return std::string();
 }
 
 // Increment proficiency
