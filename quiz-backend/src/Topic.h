@@ -11,8 +11,8 @@ public:
     std::string setName(std::string s);
     void increment();
     void decrement();
-    void Topic::activate()
-    void Topic::deactivate();
+    void activate();
+    void deactivate();
     void addQuestion(Question q);
 
 private:

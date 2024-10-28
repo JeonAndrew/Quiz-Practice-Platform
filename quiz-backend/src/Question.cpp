@@ -12,6 +12,6 @@ Question::Question(std::string t) {
 void Question::addQuestion(int index, std::string q, std::string ans, std::vector<std::string> wrongs) {
     questions_.at(index) = q;
     correctAnswers_.at(index) = ans;
-    incorrectAnswers.at(index) = wrongs;
+    incorrectAnswers_.at(index) = wrongs;
     return;
 }
