@@ -1,4 +1,4 @@
-#include "quiz.h"
+#include "Quiz.h"
 #include <list>
 #include <vector>
 #include <map>

@@ -11,7 +11,7 @@ std::string Topic::getName() const {
 
 // Increment proficiency
 void Topic::increment() {
-    if (proficiency_ < 20) { //can decide on number later
+    if (proficiency_ < kMaxProficiency) { //can decide on number later
         ++proficiency_;
     }
 }

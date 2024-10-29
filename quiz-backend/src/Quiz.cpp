@@ -1,7 +1,5 @@
-#include "quiz.h"
-#include "user.h"
 #include <utility>
-#include "Question.h"
+#include "Quiz.h"
 
 Quiz::Quiz(std::vector<Topic>& topics) {
     // First step is to sum all of the proficiency scores for active topics
@@ -19,14 +17,14 @@ Quiz::Quiz(std::vector<Topic>& topics) {
         std::pair<Topic, double> topicOdds;
         if (t.isActive()) {
             topicOdds.first = t;
-            topicOdds.second = (nextVal + (20 - t.getProficiency()) / sum);
+            topicOdds.second = (nextVal + (kMaxProficiency - t.getProficiency()) / sum);
             percents.push_back(topicOdds); // maybe change if we dont want 0% chance for mastered topic
-            nextVal += (20 - t.getProficiency()) / sum;
+            nextVal += (kMaxProficiency - t.getProficiency()) / sum;
         }
     }
     // Generating a random number and seeing where it lies on the percentage vector to 
     // see what type of topic this question is and then taking a random question from that topic
-    for (unsigned int i = 0; i < 15; i++) {
+    for (unsigned int i = 0; i < kNumQuestions; i++) {
         std::srand(static_cast<unsigned int>(time(0))); // Might need review on this line
         double random = static_cast <double> (rand()) / ( static_cast <double> (RAND_MAX)); 
         for (unsigned int j = 0; j  < percents.size(); j++) {
