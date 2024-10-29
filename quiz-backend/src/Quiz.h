@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 #include "Question.h"
+#include "User.h"
+#include "Topic.h"
 
 class Quiz {
     public:
@@ -13,8 +15,10 @@ class Quiz {
         bool hasSubmitted() const;
 
     private:
+        const int kNumQuestions = 15;
+        const int kMaxProficiency = 20;
         double result_;
         std::vector<Question> questions_;
-        std::vector<bool> questionCorrect(15);
+        std::vector<bool> questionCorrect(kNumQuestions);
         bool submissionStatus = false;
 };

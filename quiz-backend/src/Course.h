@@ -6,6 +6,7 @@
 #include <iostream>
 #include <algorithm>
 #include "Topic.h"
+#include "Question.h"
 
 class Course {
 public:

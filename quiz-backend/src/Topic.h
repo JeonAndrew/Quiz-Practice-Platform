@@ -19,6 +19,7 @@ public:
     int getTopicID() const;
 
 private:
+    const int kMaxProficiency = 20;
     std::string topicName_;
     int proficiency_;
     std::vector<Question> questions_;
