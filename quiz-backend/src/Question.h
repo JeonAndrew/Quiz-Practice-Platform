@@ -7,22 +7,13 @@
 class Question {
 public:
     Question();
-    Question(std::string t);
-    //todo
-    //edited this via web
-    //edietd this via VSCode
-    void addQuestion(int index, std::string q, std::string ans, std::vector<std::string> wrongs);
+    Question(std::string q, std::vector<string> options, std::string answer);
+    bool isCorrect(std::string submission);
 
 private:
-    //usage:
-    //get index of your question
-    //use matching index for correct answer
-    //use matching index to ACCESS a vector of possible incorrect answers; pick any amount of them
-    //dont need to use incorrectAnswers_ if it's a short response question
-    std::vector<std::string> questions_;
-    std::vector<std::string> correctAnswers_;
-    std::vector<std::vector<std::string>> incorrectAnswers_;
-    std::string topic_;
+    std::string question_;
+    std::string correctAnswer_;
+    std::vector<std::string> options_;
 };
 
 #endif // QUESTION_H

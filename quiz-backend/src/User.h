@@ -6,7 +6,7 @@
 
 class User {
     public:
-        User();
+        User(int uid, int s);
         void resetStreak();
         int getStreak();
         void addToStreak();
@@ -14,11 +14,10 @@ class User {
         void setLatestPerformance();
         Quiz getQuiz();
         void setQuiz(Quiz quiz);
-        std::map<std::string, int> getProficiencies();
 
     private:
+        int userID_;
         std::list<double> performance_;
         int streak_ = 0;
         Quiz recentQuiz_;
-        std::map<std::string, int> proficiencies_;
 };

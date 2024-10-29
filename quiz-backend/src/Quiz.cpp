@@ -1,45 +1,61 @@
-#include "Quiz.h"
-#include "User.h"
+#include "quiz.h"
+#include "user.h"
 #include <utility>
 #include "Question.h"
 
-void Quiz::setResult(double score) {
-    result_ = score;
+Quiz::Quiz(std::vector<Topic>& topics) {
+    // First step is to sum all of the proficiency scores for active topics
+    int sum = 0;
+    for (Topic t : topics) {
+        if (t.isActive()) {
+            sum += t.getProficiency();
+        }
+    }
+    // Passing each percentage interval into a vector with the topic name linked to the percentage
+    // If there were 5 topics with the same proficiency, we would have a vector of: [0.20, 0.40, 0.60, 0.80, 1.00]
+    std::vector<std::pair<std::Topic, double>> percents;
+    double nextVal = 0.0;
+    for (Topic t : topics) {
+        std::pair<Topic, double> topicOdds;
+        if (t.isActive()) {
+            topicOdds.first = t;
+            topicOdds.second = (nextVal + (20 - t.getProficiency()) / sum);
+            percents.push_back(topicOdds); // maybe change if we dont want 0% chance for mastered topic
+            nextVal += (20 - t.getProficiency()) / sum;
+        }
+    }
+    // Generating a random number and seeing where it lies on the percentage vector to 
+    // see what type of topic this question is and then taking a random question from that topic
+    for (unsigned int i = 0; i < 15; i++) {
+        std::srand(static_cast<unsigned int>(time(0))); // Might need review on this line
+        double random = static_cast <double> (rand()) / ( static_cast <double> (RAND_MAX)); 
+        for (unsigned int j = 0; j  < percents.size(); j++) {
+            if (random <= percents[j].second) {
+                questions_.push_back(percents[j].first.getRandomQuestion());
+            }
+        }
+    }
 }
 
 double Quiz::getResult() {
     return result_;
 }
 
-void Quiz::generateQuestions(std::map<std::string, int> profs) {
-    // First step is to sum all of the proficiency scores to calculate the percentages
-    int sum = 0;
-    for (const auto & [key, value] : profs) {
-        sum += value;
-    }
-    // Passing each percentage interval into a vector with the topic name linked to the percentage
-    // If there were 5 topics with the same proficiency, we would have a vector of: [0.20, 0.40, 0.60, 0.80, 1.00]
-    std::vector<std::pair<std::string, double>> percents;
-    double nextVal = 0.0;
-    for (const auto & [key, value] : profs) {
-        std::pair<std::string, double> topicOdds;
-        topicOdds.first = key;
-        topicOdds.second = (nextVal + (20 - value) / sum);
-        percents.push_back(topicOdds); // maybe change if we dont want 0% chance for mastered topic
-        nextVal++;
-    }
-    // Generating a random number and seeing where it lies on the percentage vector and generating a question of that topic
-    // Then passing a quesion with that topic to the questions_ vector
-    for (unsigned int i = 0; i < 15; i++) {
-        double random = static_cast <double> (rand()) / ( static_cast <double> (RAND_MAX)); 
-        for (unsigned int j = 0; j  < percents.size(); j++) {
-            if (random <= percents[j].second) {
-                questions_.push_back(Question(percents[j].first));
-            }
-        }
-    }
-}
-
 std::vector<Question> Quiz::getQuestions() {
     return questions_;
+}
+
+// Receives the User's answers in the order they are given to them and checks how many answers match the correct
+// answer and then sets the result
+void Quiz::submission(std::vector<std::string>& answers) {
+    int countCorrect = 0;
+    for (unsigned int i = 0; i < questions_.size(); i++) {
+        if (questions_[i].isCorrect(userAnswers_[i])) {
+            questionCorrect[i] == true;
+            countCorrect++;
+        } else {
+            questionCorrect[i] == false;
+        }
+    }
+    result_ = countCorrect / questions_.size();
 }

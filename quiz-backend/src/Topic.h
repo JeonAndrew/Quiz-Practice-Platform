@@ -6,20 +6,22 @@
 
 class Topic {
 public:
-    Topic();
+    Topic(std::string name, int proficiency);
     std::string getName();
-    std::string setName(std::string s);
     void increment();
     void decrement();
     void activate();
     void deactivate();
-    void addQuestion(Question q);
+    void addQuestion(const Question& question);
+    int getProficiency();
+    bool isActive();
+    Question getRandomQuestion();
 
 private:
-    std::string name_;
+    std::string topicName_;
     int proficiency_;
-    int userProficiency_;
     std::vector<Question> questions_;
+    bool active_ = true;
 };
 
 #endif
