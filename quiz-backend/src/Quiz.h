@@ -6,11 +6,10 @@
 
 class Quiz {
     public:
-        Quiz();
-        void setResult(double score);
+        Quiz(std::vector<Topic>& topics);
         double getResult();
-        void generateQuestions(std::map<std::string, int> profs);
         std::vector<Question> getQuestions();
+        void Quiz::submission(std::vector<std::string>& answers);
 
     private:
         double result_;

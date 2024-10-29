@@ -1,44 +1,50 @@
 #include "Topic.h"
 
-// Constructor
-Topic::Topic() : proficiency_(10) {}
+// Constructor that instantiates the proficiency for a user as well as the name of the topic
+// The proficiency will be gathered from the DB
+Topic::Topic(std::string name, int proficiency) : proficiency_(proficiency), topicName_(name) {}
 
 
 std::string Topic::getName() {
     return name_;
 }
 
-std::string Topic::setName(std::string in) {
-    name_ = in;
-    return std::string();
-}
-
 // Increment proficiency
 void Topic::increment() {
     if (proficiency_ < 20) { //can decide on number later
-        ++userProficiency_;
+        ++proficiency_;
     }
-    proficiency_ = userProficiency_;
-    return;
 }
 
 // Decrement proficiency
 void Topic::decrement() {
     if (proficiency_ > 0) {
-        --userProficiency_;
+        --proficiency_;
     }
-    proficiency_ = userProficiency_;
-    return;
 }
 
 void Topic::activate() {
-    proficiency_ = userProficiency_;
+    active_ = true;
 }
 
 void Topic::deactivate() {
-    proficiency_ = -1;
+    active_ = false;
 }
 
-void Topic::addQuestion(Question q) {
-    questions_.push_back(q);
+void Topic::addQuestion(const Question& question) {
+        questions_.push_back(question);
+    }
+
+int Topic::getProficiency() {
+    return proficiency_;
+}
+
+bool Topic::isActive() {
+    return active_;
+}
+
+Question Topic::getRandomQuestion() {
+    std::srand(static_cast<unsigned int>(time(0)));
+    int randIndex = std::rand() % questions_.size();
+    return questions_[randIndex];
 }

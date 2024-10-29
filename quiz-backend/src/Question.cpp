@@ -4,14 +4,14 @@
 // constructor
 Question::Question() {}
 
-Question::Question(std::string t) {
-    topic_ = t;
+// Creates a question after being provided with the question, options, and answer
+Question::Question(std::string q, std::vector<string> options, std::string answer) {
+    question_ = q;
+    options_ = options;
+    answer_ = answer;
 }
 
-//todo
-void Question::addQuestion(int index, std::string q, std::string ans, std::vector<std::string> wrongs) {
-    questions_.at(index) = q;
-    correctAnswers_.at(index) = ans;
-    incorrectAnswers_.at(index) = wrongs;
-    return;
+// Returns whether the user's submission for the current question is correct
+bool Question::isCorrect(std::string submission) {
+    return submission == answer_;
 }
