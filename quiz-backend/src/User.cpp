@@ -1,6 +1,6 @@
-#include "user.h"
+#include "User.h"
 
-User::User() {}
+User::User(int uid) : userID_(uid) {}
 
 // Will execute when user misses a day, resetting the streak to 0
 void User::resetStreak() {
@@ -41,9 +41,4 @@ Quiz User::getQuiz() {
 void User::setQuiz(Quiz quiz) {
     recentQuiz_ = quiz;
     setLatestPerformance();
-}
-
-// Returns proficiencies for each topic
-std::map<std::string, int> User::getProficiencies() {
-    return proficiencies_;
 }
