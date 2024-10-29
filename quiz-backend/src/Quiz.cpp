@@ -37,11 +37,11 @@ Quiz::Quiz(std::vector<Topic>& topics) {
     }
 }
 
-double Quiz::getResult() {
+double Quiz::getResult() const {
     return result_;
 }
 
-std::vector<Question> Quiz::getQuestions() {
+std::vector<Question> Quiz::getQuestions() const {
     return questions_;
 }
 

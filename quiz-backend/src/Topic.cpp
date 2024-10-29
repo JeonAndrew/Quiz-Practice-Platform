@@ -2,10 +2,10 @@
 
 // Constructor that instantiates the proficiency for a user as well as the name of the topic
 // The proficiency will be gathered from the DB
-Topic::Topic(std::string name, int proficiency) : proficiency_(proficiency), topicName_(name) {}
+Topic::Topic(std::string name, int tID, int proficiency) : proficiency_(proficiency), topicID_(tID) topicName_(name) {}
 
 
-std::string Topic::getName() {
+std::string Topic::getName() const {
     return name_;
 }
 
@@ -35,16 +35,20 @@ void Topic::addQuestion(const Question& question) {
         questions_.push_back(question);
     }
 
-int Topic::getProficiency() {
+int Topic::getProficiency() const {
     return proficiency_;
 }
 
-bool Topic::isActive() {
+bool Topic::isActive() const {
     return active_;
 }
 
-Question Topic::getRandomQuestion() {
+Question Topic::getRandomQuestion() const {
     std::srand(static_cast<unsigned int>(time(0)));
     int randIndex = std::rand() % questions_.size();
     return questions_[randIndex];
+}
+
+int Topic::getTopicID() const {
+    return topicID_;
 }
