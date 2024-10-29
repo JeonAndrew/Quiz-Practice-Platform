@@ -45,6 +45,10 @@ std::vector<Question> Quiz::getQuestions() const {
     return questions_;
 }
 
+bool hasSubmitted() const {
+    return submissionStatus;
+}
+
 // Receives the User's answers in the order they are given to them and checks how many answers match the correct
 // answer and then sets the result
 void Quiz::submission(std::vector<std::string>& answers) {
@@ -58,4 +62,5 @@ void Quiz::submission(std::vector<std::string>& answers) {
         }
     }
     result_ = countCorrect / questions_.size();
+    submissionStatus = true;
 }
