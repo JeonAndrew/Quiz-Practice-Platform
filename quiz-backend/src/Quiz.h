@@ -7,9 +7,9 @@
 class Quiz {
     public:
         Quiz(std::vector<Topic>& topics);
-        double getResult();
-        std::vector<Question> getQuestions();
-        void Quiz::submission(std::vector<std::string>& answers);
+        double getResult() const ;
+        std::vector<Question> getQuestions() const;
+        void submission(std::vector<std::string>& answers);
 
     private:
         double result_;
