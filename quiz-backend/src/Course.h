@@ -14,7 +14,6 @@ public:
 
     // Public member functions
     void addTopic(Topic& t);
-    void removeTopic(const int& tID);
     int findTopic(const int& tID) const;
     void listTopics() const;
     std::vector<Topic> getTopics();
