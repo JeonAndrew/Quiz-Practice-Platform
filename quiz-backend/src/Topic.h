@@ -16,7 +16,9 @@ public:
     int getProficiency() const;
     bool isActive() const;
     Question getRandomQuestion() const;
+    std::vector<Question> shuffleQuestionVector();
     int getTopicID() const;
+    bool containsQuestion(std::string q);
 
 private:
     const int kMaxProficiency = 20;

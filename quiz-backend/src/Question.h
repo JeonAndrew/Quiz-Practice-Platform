@@ -7,8 +7,11 @@
 class Question {
 public:
     Question();
-    Question(std::string q, std::vector<string> options, std::string answer);
+    Question(std::string q, std::vector<std::string> options, std::string answer);
     bool isCorrect(std::string submission);
+    std::vector<std::string> getOptions();
+    std::string getQuestion();
+    std::string getCorrectAnswer();
 
 private:
     std::string question_;

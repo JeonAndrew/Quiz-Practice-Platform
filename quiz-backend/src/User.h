@@ -14,6 +14,7 @@ class User {
         void setLatestPerformance();
         Quiz getQuiz();
         void setQuiz(Quiz quiz);
+        int getUserID();
 
     private:
         int userID_;

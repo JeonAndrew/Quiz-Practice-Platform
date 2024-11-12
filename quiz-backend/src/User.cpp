@@ -42,3 +42,7 @@ void User::setQuiz(Quiz quiz) {
     recentQuiz_ = quiz;
     setLatestPerformance();
 }
+
+int User::getUserID() {
+    return userID_;
+}
