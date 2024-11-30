@@ -11,10 +11,32 @@ venv/
 .venv/
 env/
 ENV/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.env/
+venv/
+.venv/
+env/
+ENV/
 build/
 dist/
 *.egg-info/
+dist/
+*.egg-info/
 
+# Flask specific
+instance/
+*.bak
+*.swp
+*.swo
+*.pid
+*.log
 # Flask specific
 instance/
 *.bak
@@ -29,16 +51,27 @@ build/
 .cache/
 *.log
 *.env
+# React (Frontend)
+node_modules/
+build/
+.cache/
+*.log
+*.env
 
+# System-specific
+.DS_Store
+Thumbs.db
 # System-specific
 .DS_Store
 Thumbs.db
 
 # IDE/Editor-specific
+# IDE/Editor-specific
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
+*.vscode/
 *.vscode/
 *.swp
 
