@@ -1,55 +1,61 @@
-# CMake files
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.env/
+venv/
+.venv/
+env/
+ENV/
 build/
+dist/
+*.egg-info/
 
-# Build directories
-/build/
-bin/
-lib/
+# Flask specific
+instance/
+*.bak
+*.swp
+*.swo
+*.pid
+*.log
 
-# Executables
-*.exe
-*.out
-*.app
-*.dll
-*.so
-*.dylib
+# React (Frontend)
+node_modules/
+build/
+.cache/
+*.log
+*.env
 
-# Object files
-*.o
-*.obj
+# System-specific
+.DS_Store
+Thumbs.db
 
-# Dependency files
-*.d
-
-# IDE files
+# IDE/Editor-specific
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
-
-# Compiled C++ files
-*.class
-*.pyc
-
-# Clang-Tidy configuration
-.clang-tidy
-.clang-tidy.yaml
-
-# Catch2 testing framework
-catch2/
-
-# Backup files
-*~
-*.bak
+*.vscode/
 *.swp
 
-# Other
-*.log
-*.tmp
-*.tmp.*
-*.DS_Store
-*.Thumbs.db
+# Python testing
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+
+# pipenv
+Pipfile.lock
+
+# Pyenv
+.python-version
+
+# Virtual Environment (if any)
+.venv/
+
+# Local development config
+*.env
