@@ -8,20 +8,6 @@ void Course::addTopic(Topic& t) {
     topics_.push_back(t);
 }
 
-// removes topic from course
-// if you try to remove a topic that doesn't exist, it will do nothing
-// for now have added an std::cout statement for the above case
-void Course::removeTopic(const int& tID) {
-    for (auto it = topics_.begin(); it != topics_.end(); it++) {
-        if (it->getTopicID() == tID) {
-            topics_.erase(it);
-            return;
-        }
-    }
-    std::cout << "please remove a topic that exists in the courselist" << std::endl;
-    return; // topic not found
-}
-
 // returns the index of a given topic. can find topic names thru listTopics()
 // probably not for user use
 int Course::findTopic(const int& tID) const {

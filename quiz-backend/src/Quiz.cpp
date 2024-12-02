@@ -14,9 +14,11 @@ Quiz::Quiz(std::vector<Topic>& topics) {
     std::vector<std::pair<std::Topic, double>> percents;
     double nextVal = 0.0;
     for (Topic t : topics) {
-        std::pair<Topic, double> topicOdds;
+        // Create a pair that links a pair of a Topic and its shuffled questions vector to its odds
+        std::pair<std::pair<Topic, std::vector<Question>, double> topicOdds;
         if (t.isActive()) {
-            topicOdds.first = t;
+            topicOdds.first.first = t;
+            topicOdds.first.second = t.shuffleQuestionVector();
             topicOdds.second = (nextVal + (kMaxProficiency - t.getProficiency()) / sum);
             percents.push_back(topicOdds); // maybe change if we dont want 0% chance for mastered topic
             nextVal += (kMaxProficiency - t.getProficiency()) / sum;
@@ -27,9 +29,11 @@ Quiz::Quiz(std::vector<Topic>& topics) {
     for (unsigned int i = 0; i < kNumQuestions; i++) {
         std::srand(static_cast<unsigned int>(time(0))); // Might need review on this line
         double random = static_cast <double> (rand()) / ( static_cast <double> (RAND_MAX)); 
-        for (unsigned int j = 0; j  < percents.size(); j++) {
+        for (unsigned int j = 0; j < percents.size(); j++) {
             if (random <= percents[j].second) {
-                questions_.push_back(percents[j].first.getRandomQuestion());
+                // Using the randomly generated vector of questions to access a random question without duplicates
+                questions_.push_back(percents[j].first.second[i]);
+                questionTopics_.push_back(percents[j]);
             }
         }
     }
@@ -55,8 +59,10 @@ void Quiz::submission(std::vector<std::string>& answers) {
         if (questions_[i].isCorrect(userAnswers_[i])) {
             questionCorrect[i] == true;
             countCorrect++;
+            questionTopics_[i].increment();
         } else {
             questionCorrect[i] == false;
+            questionTopics_[i].decrement();
         }
     }
     result_ = countCorrect / questions_.size();

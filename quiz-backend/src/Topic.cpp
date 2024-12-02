@@ -49,6 +49,21 @@ Question Topic::getRandomQuestion() const {
     return questions_[randIndex];
 }
 
+std::vector<Question> Topic::shuffleQuestionVector() {
+    std::vector<Question> shuffledQuestions(questions_);
+    std::random_shuffle(shuffledQuestions.begin(), shuffledQuestions.end());
+    return shuffledQuestions;
+}
+
 int Topic::getTopicID() const {
     return topicID_;
+}
+
+bool Topic::containsQuestion(std::string q) {
+    for (Question que : questions_) {
+        if (que.getQuestion() == q) {
+            return true;
+        }
+    }
+    return false;
 }

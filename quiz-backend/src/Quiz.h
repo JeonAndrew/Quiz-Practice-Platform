@@ -19,6 +19,7 @@ class Quiz {
         const int kMaxProficiency = 20;
         double result_;
         std::vector<Question> questions_;
+        std::vector<Topic> questionTopics_;
         std::vector<bool> questionCorrect(kNumQuestions);
         bool submissionStatus = false;
 };
