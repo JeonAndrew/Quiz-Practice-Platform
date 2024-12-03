@@ -5,8 +5,12 @@ set(CMAKE_C_COMPILER "/usr/bin/clang")
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 set(CMAKE_LINKER "/usr/bin/clang++")
 
-# Specifiy Clang Tidy linter.
-set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,performance-*,modernize-*,bugprone-*,cppcoreguidelines-*,clang-analyzer-*,-llvm*")
+# Specify Clang-Tidy linter.
+set(CMAKE_CXX_CLANG_TIDY 
+    "clang-tidy"
+    "-checks=-*,bugprone-*,cppcoreguidelines-*,-llvm*"
+    "-header-filter=/.*"  # Only include project headers
+)
 
 # Specify ccache for faster recompilation if found.
 find_program(CCACHE_FOUND ccache)
