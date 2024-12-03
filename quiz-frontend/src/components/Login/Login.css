@@ -1,0 +1,29 @@
+.login-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 25vw;
+    background-color: rgb(88, 171, 88);
+    color: white;
+    border-radius: 5%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.login-form-input {
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.login-form-submit {
+    padding: 10px;
+    background-color: rgb(63, 132, 63);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
