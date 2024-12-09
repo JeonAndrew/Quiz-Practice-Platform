@@ -53,3 +53,6 @@ catch2/
 *.tmp.*
 *.DS_Store
 *.Thumbs.db
+
+*.fbconfig.json
+quiz-backend/src/cs222-quiz-proj-firebase-adminsdk-k0qc4-685f7d0bee.json:1
