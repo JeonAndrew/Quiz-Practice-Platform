@@ -59,3 +59,11 @@ Pipfile.lock
 
 # Local development config
 *.env
+# Exclude Firebase service account key
+/quiz-backend/src/cs222-quiz-proj-firebase-adminsdk-k0qc4-936c2f1d05.json
+
+# Exclude Firebase config file
+/quiz-backend/src/fbconfig.json
+
+# Optionally exclude all `.json` files in `src` (be careful with this if you need to track other JSON files)
+/quiz-backend/src/*.json
