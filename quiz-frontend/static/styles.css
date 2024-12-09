@@ -1,0 +1,33 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.flashes li.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flashes li.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
