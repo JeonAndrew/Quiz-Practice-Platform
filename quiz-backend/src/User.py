@@ -1,9 +1,9 @@
 from collections import deque
 
 class User:
-    def __init__(self, u_id):
+    def __init__(self, uid):
         self.user_id = uid
-        self.performance = deque(max_len = 7)  # To store the last 7 quiz results
+        self.performance = deque(maxlen = 7)  # To store the last 7 quiz results
         self.streak = 0
         self.recent_quiz = None
 
@@ -22,7 +22,8 @@ class User:
     def set_latest_performance(self):
         if len(self.performance) >= 7:
             self.performance.popleft() 
-        self.performance.append(self.recent_quiz.get_result()) 
+        if self.recent_quiz:
+            self.performance.append(self.recent_quiz.get_result()) 
 
     def get_quiz(self):
         return self.recent_quiz
