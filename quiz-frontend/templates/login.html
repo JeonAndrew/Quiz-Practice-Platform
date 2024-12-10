@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Login</h2>
+  <form id="login-form" class="mt-3">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <div id="login-error" class="mt-3"></div>
+  <p class="mt-3">Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a>.</p>
+</div>
+
+<script>
+  // Ensure Firebase is loaded before executing this script
+  if (typeof firebase === 'undefined') {
+      console.error("Firebase SDK not loaded.");
+  } else {
+      console.log("Firebase SDK loaded successfully.");
+  }
+
+  // Get references to the form and input fields
+  const loginForm = document.getElementById('login-form');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const errorDiv = document.getElementById('login-error');
+
+  // Add an event listener for form submission
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    // Clear previous error
+    errorDiv.innerHTML = '';
+
+    if (!firebase) {
+        errorDiv.innerHTML = `<div class="alert alert-danger">Firebase SDK not loaded.</div>`;
+        console.error("Firebase object is not available.");
+        return;
+    }
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        //console.log("User signed in:", userCredential.user.uid);
+        // Signed in
+        firebase.auth().currentUser.getIdToken().then((idToken) => {
+          console.log("ID Token retrieved:", idToken);
+          // Send ID token to Flask backend
+          fetch('{{ url_for("login") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({ idToken: idToken }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              console.log("Login successful. Redirecting to home page.");
+              window.location.href = '{{ url_for("index") }}';
+            } else {
+              // Display error message
+              console.error("Login failed:", data.message);
+              errorDiv.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+            }
+          })
+          .catch((error) => {
+            console.error("Error during fetch:", error);
+            errorDiv.innerHTML = `<div class="alert alert-danger">An error occurred: ${error.message}</div>`;
+          });
+        }).catch((error) => {
+          console.error("Failed to get ID token:", error);
+          errorDiv.innerHTML = `<div class="alert alert-danger">Failed to get ID token: ${error.message}</div>`;
+        });
+      })
+      .catch((error) => {
+        // Display Firebase Auth errors
+        console.error("Firebase Auth Error:", error.message);
+        errorDiv.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+      });
+  });
+</script>
+{% endblock %}
