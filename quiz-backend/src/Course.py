@@ -9,10 +9,10 @@ class Course:
 
     def find_topic(self, t_id):
         index = 0
-        for topic in enumerate(self.topics):
+        for topic in self.topics:
             if topic.get_topic_id() == t_id:
                 return index
-            i += 1
+            index += 1
         return -1  
 
     def list_topics(self):

@@ -57,7 +57,7 @@ class Quiz:
         # Go through each question in the Quiz and check to see if the submitted answer is correct
         # If yes, incrememnt proficiency and mark Question as True, decrememnt and mark False otherwise
         for i in range(self.kNumQuestions):
-            if questions[i].is_correct(user_answers[i]):
+            if self.questions[i].is_correct(user_answers[i]):
                 self.question_correct[i] = True
                 count_correct += 1
                 self.question_topics[i].increment()  
