@@ -1,14 +1,15 @@
+# topic.py
+
 import random
-from models.Question import Question
 
 class Topic:
     kMaxProficiency = 20
 
-    def __init__(self, name, t_id, proficiency, active=True):
+    def __init__(self, name, t_id, proficiency):
         self.topic_name = name
         self.topic_id = t_id
         self.proficiency = proficiency
-        self.active = active
+        self.active = True
         self.questions = []
 
     def get_name(self):

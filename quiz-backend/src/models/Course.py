@@ -1,3 +1,5 @@
+# course.py
+
 class Course:
     def __init__(self, name, c_id):
         self.course_name = name
