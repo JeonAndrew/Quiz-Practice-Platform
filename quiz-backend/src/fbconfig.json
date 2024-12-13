@@ -1,9 +1,9 @@
 {
-    "apiKey": "AIzaSyBfki1px8rqRQ6xn-4VZw0KpSnYfn1kAVI",
-    "authDomain": "cs222-quiz-proj.firebaseapp.com",
-    "projectId": "cs222-quiz-proj",
-    "storageBucket": "cs222-quiz-proj.firebasestorage.app",
-    "messagingSenderId": "929774862650",
-    "appId": "1:929774862650:web:dbe92440e223ff9f97d003",
-    "measurementId": "G-3WN6QCGYDR"
+  "apiKey": "AIzaSyBfki1px8rqRQ6xn-4VZw0KpSnYfn1kAVI",
+  "authDomain": "cs222-quiz-proj.firebaseapp.com",
+  "projectId": "cs222-quiz-proj",
+  "storageBucket": "cs222-quiz-proj.firebasestorage.app",
+  "messagingSenderId": "929774862650",
+  "appId": "1:929774862650:web:dbe92440e223ff9f97d003",
+  "measurementId": "G-3WN6QCGYDR"
   }
