@@ -65,3 +65,5 @@ class Quiz:
 
         self.result = count_correct / len(self.questions)
         self.submission_status = True
+
+        

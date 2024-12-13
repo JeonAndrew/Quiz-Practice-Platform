@@ -57,3 +57,5 @@ class User:
         else:
             user.recent_quiz = None
         return user
+    
+    
