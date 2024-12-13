@@ -84,11 +84,13 @@ def get_all_courses():
     courses_ref = db.collection('courses').stream()
     for c_doc in courses_ref:
         c_data = c_doc.to_dict()
+        print("Found course:", c_doc.id, c_data)
         course = {
             'course_id': c_doc.id,
             'name': c_data.get('name', '')
         }
         courses_list.append(course)
+    print("Courses found:", courses_list)
     return courses_list
 
 def get_active_topics_for_course(course_id):
