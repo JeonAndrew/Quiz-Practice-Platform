@@ -40,6 +40,7 @@ class Topic:
     def shuffle_question_vector(self):
         return random.sample(self.questions, len(self.questions))
 
+
     def get_topic_id(self):
         return self.topic_id
 
