@@ -1,26 +1,66 @@
-<!-- quiz.html -->
-
 {% extends 'base.html' %}
 {% block title %}Quiz{% endblock %}
 {% block content %}
-<div class="container mt-5">
-    <h2>Quiz</h2>
-    <form method="post" class="mt-4">
-        {% for question in quiz.get_questions() %}
-            {% set q_index = loop.index0 %}
-            <div class="mb-4">
-                <p><strong>{{ loop.index }}. {{ question.get_question() }}</strong></p>
+<div class="quiz-container">
+    <form method="post">
+        <div class="question-card">
+            <h3 class="question-text">
+                Question {{ question_number }} of {{ total_questions }}:<br><br>
+                {{ question.get_question() }}
+            </h3>
+            <div class="options-container">
                 {% for option in question.get_options() %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="question_{{ q_index }}" value="{{ option }}" id="q{{ q_index }}option{{ loop.index }}">
-                        <label class="form-check-label" for="q{{ q_index }}option{{ loop.index }}">
-                            {{ option }}
+                    {% set is_correct_option = (option == correct_answer) %}
+                    {% set is_chosen_option = (option == selected_answer) %}
+
+                    {% if feedback_mode %}
+                        {# Feedback mode: show correct/incorrect #}
+                        {% if is_chosen_option and is_correct %}
+                            {# Correct chosen answer #}
+                            <label class="option-label feedback-correct">
+                                <input class="option-input" type="radio" name="answer_choice" value="{{ option }}" disabled checked>
+                                <span class="option-content">{{ option }}</span>
+                            </label>
+                        {% elif is_chosen_option and not is_correct %}
+                            {# Chosen but wrong #}
+                            <label class="option-label feedback-incorrect">
+                                <input class="option-input" type="radio" name="answer_choice" value="{{ option }}" disabled checked>
+                                <span class="option-content">{{ option }}</span>
+                            </label>
+                        {% elif is_correct_option and not is_chosen_option %}
+                            {# Correct answer not chosen (or skipped) #}
+                            <label class="option-label feedback-correct">
+                                <input class="option-input" type="radio" name="answer_choice" value="{{ option }}" disabled>
+                                <span class="option-content">{{ option }}</span>
+                            </label>
+                        {% else %}
+                            {# Wrong option not chosen #}
+                            <label class="option-label feedback-neutral">
+                                <input class="option-input" type="radio" name="answer_choice" value="{{ option }}" disabled>
+                                <span class="option-content">{{ option }}</span>
+                            </label>
+                        {% endif %}
+                    {% else %}
+                        {# Normal answering mode: highlight chosen option differently #}
+                        <label class="option-label normal-mode">
+                            <input class="option-input" type="radio" name="answer_choice" value="{{ option }}">
+                            <span class="option-content">{{ option }}</span>
                         </label>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
-        {% endfor %}
-        <button type="submit" class="btn btn-success">Submit Answers</button>
+        </div>
+
+        <div class="quiz-actions">
+            {% if not feedback_mode %}
+                {# In answering mode, show Check and Skip #}
+                <button type="submit" class="btn check-btn" name="action" value="check">Check</button>
+                <button type="submit" class="btn skip-btn" name="action" value="skip">Skip</button>
+            {% else %}
+                {# In feedback mode, show Next #}
+                <button type="submit" class="btn next-btn" name="action" value="next">Next</button>
+            {% endif %}
+        </div>
     </form>
 </div>
-{% endblock %}
+{% endblock %} 

@@ -398,3 +398,5 @@ def quiz_result():
 if __name__ == '__main__':
     logger.info("Starting Flask application.")
     app.run(debug=True)
+
+    

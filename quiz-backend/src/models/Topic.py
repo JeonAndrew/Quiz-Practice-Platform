@@ -42,3 +42,5 @@ class Topic:
 
     def get_topic_id(self):
         return self.topic_id
+    
+    

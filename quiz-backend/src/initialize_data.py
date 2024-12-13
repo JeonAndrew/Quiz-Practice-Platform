@@ -29,6 +29,8 @@ def initialize_firestore_data(db):
     #   ...
     # }
 
+    
+
     courses = {
         "CS 225": {
             "course_id": "225",
