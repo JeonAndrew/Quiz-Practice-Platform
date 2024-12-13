@@ -1,5 +1,3 @@
-# models/User.py
-
 from collections import deque
 from models.Quiz import Quiz
 
@@ -10,7 +8,6 @@ class User:
         self.performance = deque(maxlen=7)  # To store the last 7 quiz results
         self.streak = 0
         self.recent_quiz = None
-
 
     def reset_streak(self):
         self.streak = 0
@@ -51,11 +48,11 @@ class User:
         return user_data
 
     @classmethod
-    def from_dict(cls, data, topics):
+    def from_dict(cls, data, topics=None):
         user = cls(u_id=data.get('user_id'), email=data.get('email'))
         user.performance = deque(data.get('performance', []), maxlen=7)
         user.streak = data.get('streak', 0)
-        if data.get('recent_quiz'):
+        if data.get('recent_quiz') and topics is not None:
             user.recent_quiz = Quiz.from_dict(data['recent_quiz'], topics)
         else:
             user.recent_quiz = None
