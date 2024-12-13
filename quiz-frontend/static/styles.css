@@ -1,33 +1,136 @@
-/* styles.css */
-
+/* Base and general styling */
 body {
     font-family: Arial, sans-serif;
 }
 
-.container {
-    margin: 20px;
+/* Quiz page container */
+.quiz-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #1C2D5E; /* Dark navy background */
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
 }
 
-nav a {
-    margin-right: 10px;
+/* Individual question card */
+.question-card {
+    background-color: #1C2D5E;
+    margin-bottom: 20px;
 }
 
-.flashes {
-    list-style-type: none;
-    padding: 0;
+/* Question text */
+.question-text {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
-.flashes li {
-    padding: 10px;
-    margin-bottom: 10px;
+/* Options container */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.flashes li.success {
-    background-color: #d4edda;
-    color: #155724;
+/* Each option label */
+.option-label {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
-.flashes li.danger {
-    background-color: #f8d7da;
-    color: #721c24;
+/* Hide the default radio button */
+.option-input {
+    display: none;
+}
+
+/* Style the option when selected */
+.option-input:checked + .option-content {
+    background-color: #2BA84A; /* Green background for selected option */
+    color: #fff;
+    border-radius: 5px;
+    display: block;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+/* The span inside label to style content specifically */
+.option-content {
+    display: block;
+    width: 100%;
+}
+
+/* Hover effect on non-selected options */
+.option-label:hover {
+    background-color: #e9e9e9;
+}
+
+/* Buttons container */
+.quiz-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* General button style */
+.quiz-actions .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+}
+
+/* Skip button - red */
+.skip-btn {
+    background-color: #d9534f;
+}
+
+/* Check button - blue */
+.check-btn {
+    background-color: #337ab7;
+}
+
+.skip-btn:hover {
+    background-color: #c9302c;
+}
+
+.check-btn:hover {
+    background-color: #286090;
+}
+/* Normal mode selected option: highlight in blue */
+.normal-mode .option-input:checked + .option-content {
+    background-color: #337ab7; /* Blue */
+    color: #fff;
+    border-radius: 5px;
+    display: block;
+    padding: 15px;
+}
+
+/* Feedback mode highlighting */
+.feedback-correct {
+    background-color: #2BA84A !important; /* Green for correct */
+    color: #fff !important;
+}
+
+.feedback-incorrect {
+    background-color: #d9534f !important; /* Red for incorrect */
+    color: #fff !important;
+}
+
+.feedback-neutral {
+    background-color: #FFFFFF !important;
+    color: #000;
 }
