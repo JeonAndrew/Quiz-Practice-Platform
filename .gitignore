@@ -11,10 +11,32 @@ venv/
 .venv/
 env/
 ENV/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.env/
+venv/
+.venv/
+env/
+ENV/
 build/
 dist/
 *.egg-info/
+dist/
+*.egg-info/
 
+# Flask specific
+instance/
+*.bak
+*.swp
+*.swo
+*.pid
+*.log
 # Flask specific
 instance/
 *.bak
@@ -29,41 +51,38 @@ build/
 .cache/
 *.log
 *.env
+# React (Frontend)
+node_modules/
+build/
+.cache/
+*.log
+*.env
 
 # System-specific
 .DS_Store
 Thumbs.db
+# System-specific
+.DS_Store
+Thumbs.db
 
+# IDE/Editor-specific
 # IDE/Editor-specific
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
 *.vscode/
+*.vscode/
 *.swp
 
-# Python testing
-.coverage
-nosetests.xml
-coverage.xml
-*.cover
+# Other
+*.log
+*.tmp
+*.tmp.*
+*.DS_Store
+*.Thumbs.db
 
-# pipenv
-Pipfile.lock
-
-# Pyenv
-.python-version
-
-# Virtual Environment (if any)
-.venv/
-
-# Local development config
-*.env
-# Exclude Firebase service account key
-/quiz-backend/src/cs222-quiz-proj-firebase-adminsdk-k0qc4-936c2f1d05.json
-
-# Exclude Firebase config file
-/quiz-backend/src/fbconfig.json
-
-# Optionally exclude all `.json` files in `src` (be careful with this if you need to track other JSON files)
-/quiz-backend/src/*.json
+*.fbconfig.json
+quiz-backend/src/cs222-quiz-proj-firebase-adminsdk-k0qc4-936c2f1d05.json
+Quiz-Practice-Platform-1/quiz-backend/src/cs222-quiz-proj-firebase-adminsdk-k0qc4-936c2f1d05.json
+quiz-backend/src/cs222-quiz-proj-firebase-adminsdk-k0qc4-0ab5ea04f1.json
