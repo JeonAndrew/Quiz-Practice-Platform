@@ -1,15 +1,14 @@
-# topic.py
-
 import random
+from models.Question import Question
 
 class Topic:
     kMaxProficiency = 20
 
-    def __init__(self, name, t_id, proficiency):
+    def __init__(self, name, t_id, proficiency, active=True):
         self.topic_name = name
         self.topic_id = t_id
         self.proficiency = proficiency
-        self.active = True
+        self.active = active
         self.questions = []
 
     def get_name(self):
@@ -41,14 +40,5 @@ class Topic:
     def shuffle_question_vector(self):
         return random.sample(self.questions, len(self.questions))
 
-
-
-
-
-
-# hello
     def get_topic_id(self):
         return self.topic_id
-
-    def contains_question(self, q):
-        return any(que.get_question() == q for que in self.questions)

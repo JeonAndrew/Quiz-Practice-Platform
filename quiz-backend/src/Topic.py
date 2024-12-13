@@ -43,4 +43,5 @@ class Topic:
         return self.topic_id
 
     def contains_question(self, q):
-        return any([q == x.get_question() for x in self.questions])
+        for que in self.questions:
+            return any(que.get_question() == q)

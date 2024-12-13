@@ -1,8 +1,3 @@
-# quiz.py
-
-import random
-
-import random
 from models.Question import Question
 
 class Quiz:
@@ -43,9 +38,6 @@ class Quiz:
             topic = next((t for t in topics if t.get_topic_id() == int(topic_id)), None)
             if topic:
                 quiz.question_topics.append(topic)
-            else:
-                # Handle missing topic
-                pass
         quiz.question_correct = data.get('question_correct', [])
         quiz.submission_status = data.get('submission_status', False)
         return quiz
@@ -62,6 +54,7 @@ class Quiz:
     def submission(self, user_answers):
         count_correct = 0
 
+        # user_answers is a list of answers for each question
         for i in range(len(self.questions)):
             if self.questions[i].is_correct(user_answers[i]):
                 self.question_correct[i] = True
