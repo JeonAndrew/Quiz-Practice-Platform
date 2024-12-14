@@ -1,1 +1,1 @@
-//something
+The Quiz Practice Platform is a web application that students can use to study and practice for exams of numerous courses. Tailors its quizzes to the needs of the student. It allows students to choose what course they would like to practice for, and students may select topics within each course they would like to focus on. Quizzes will give students a multiple choice question that they can answer or choose to skip; the correct answer will be revealed after each problem regardless of their choice.
