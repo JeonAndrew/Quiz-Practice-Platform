@@ -3,3 +3,9 @@ The Quiz Practice Platform is a web application that students can use to study a
 Clone the Quiz Practice Platform from the main branch into your code editor (i.e. Visual Studio Code). From here, the folder should have a dockerfile, so open the folder in a docker container, which should have all of the python dependencies to start running the code. If they are not all present, just use pip install to install the remaining dependencies. From here, download the secret key file used to access the firebase backend / database. Place that file in quiz-backend/src, and change the file path in app.py in the same folder to reflect the path of this file with the secret key. After doing so, running python app.py in this directory should start up the flask server and accessing the localhost / ip should provide access to the website. 
 
 Note: The secret key is vital to running the website since the app.py which the app runs on requires it to have access to the database. This cannot be committed since it throws flags / errors and is disabled by Google which will prompt the need for a new secret key.
+
+Group Member Roles:
+Steven Uruchima: frontend development and testing
+Atul Ummaneni: backend/database development
+Charles Huang: backend development
+Andrew Jeon: backend development
