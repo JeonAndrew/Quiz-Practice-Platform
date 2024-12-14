@@ -39,6 +39,9 @@ Note: The secret key is vital to running the website since the app.py which the 
 
 # Group members and their roles
 Steven Uruchima: frontend development and testing
+
 Atul Ummaneni: backend/database development
+
 Charles Huang: backend development
+
 Andrew Jeon: backend development
